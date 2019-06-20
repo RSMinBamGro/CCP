@@ -18,8 +18,8 @@
   存储基元：即存储元件，又称存储元。
   存储字：存储单元中存储的一串二进制代码。
   存储字长：存储字的位宽。
-  存储容量：
-  机器字长：
+  存储容量：= 存储单元个数 * 存储字长。
+  机器字长：CPU 一次能处理数据的位数，通常与 CPU 寄存器位数有关。
   指令字长：
 
 
@@ -34,6 +34,9 @@
   ACC：Accumulator，累加器，运算器组成部件，在加减乘除运算中用以存放被加数及和、被减数及差、乘积高位和被除数及余数。
   MQ：Multiplier-Quotient Register，乘商寄存器，运算器组成部件，在乘法除法中用以存放乘数及乘积低位和商。
   X：操作数寄存器，运算器组成部件，在加减乘除运算中用以存放加数、减数、被乘数和除数。
-  MAR：Memory Address Register，存储器地址寄存器，实现按地址访问所必须配置的寄存器，用以存放欲访问的存储单元的地址。
+  MAR：Memory Address Register，存储器地址寄存器，实现按地址访问所必须配置的寄存器，用以存放欲访问的存储单元的地址，2 ^ MAR位宽 代表存储单元个数。
   MDR：Memory Data Register，存储器数据寄存器，实现按地址访问所必须配置的寄存器，用以存放从存储体某单元取出或者准备存入的代码，其位数与存储字长相等。
   I/O：Input/Ouput Equipment，I/O设备，即输入输出设备。
+  MIPS：Million Instruction Per Second，百万条指令每秒，计量单位。
+  CPI：Cycle Per Instruction，执行一条指令所需要的时钟周期。
+  FLOPS：Floating Point Operation Per Second，浮点运算次数每秒。
