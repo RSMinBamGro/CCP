@@ -38,6 +38,7 @@
 ![集中刷新](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/%E9%9B%86%E4%B8%AD%E5%88%B7%E6%96%B0.png)<br/>
 &emsp;&emsp;② 分散刷新<br/>
 &emsp;&emsp;&emsp;&emsp;对每行存储单元的刷新分散到每个存取周期内完成，将存取周期分成两段，前半段用来读/写或维持信息，后半段用来刷新，若读写周期为 0.5μs，则存取周期为 1μs 。以 128 * 128 的存储芯片为例，刷新按行进行，每隔 128μs 就可以将全部存储单元刷新一遍。如此不存在死时间，但存取周期变长，整个系统速度降低。<br/>
+![分散刷新](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/%E5%88%86%E6%95%A3%E5%88%B7%E6%96%B0.png)
 &emsp;&emsp;③ 异步刷新<br/>
 &emsp;&emsp;&emsp;&emsp;集中式和分散式的折中。<br/>
 &emsp;&emsp;&emsp;&emsp;对于 n * n 的存储芯片阵列，在 2ms 内对 n 行各刷新一遍，即每隔 2000μs / n 刷新一行，仅在每行的存取进行到最后时进行一次时长为一存取周期的刷新。<br/>
