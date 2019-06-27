@@ -1,13 +1,15 @@
 3.存储器的层次结构主要体现在什么地方？为什么分这些层次？计算机如何管理这些层次？<br/>
 &emsp;主要体现在“缓存-主存”和“主存-辅存”这两个存储层次上。<br/>
-&emsp;&emsp;① “缓存-主存”层次主要解决 CPU 和主存速度不匹配问题。从整体运行效果分析，该层次速度接近缓存，而容量和价位接近主存。缓存主存间的数据调动由硬件自动完成。<br/>
+&emsp;&emsp;① “缓存-主存”层次主要解决 CPU 和主存速度不匹配问题。从整体运行效果分析，该层次速度接近缓存，而容量和价位接近主存。缓存主存间的数据调动由硬件自动完成。<br/><br/>
+
 &emsp;&emsp;② “主存-辅存”层次主要解决容量问题，从整体分析，其速度更接近与主存，容量更接近辅存。主存辅存间的数据调动由硬件和操作系统共同完成。<br/>
 <br/><br/>
 
 4.说明存取周期和存取时间的区别。<br/>
 &emsp;① 存取时间：又称存储器的访问时间，指启动一次存储器操作（读或写）到完成该操作所需的全部时间。分读出时间和写入时间。<br/>
 &emsp;&emsp;1）读出时间：从存储器接收到有效地址开始，到产生有效输出所需的全部时间。<br/>
-&emsp;&emsp;2）写入时间：从存储器接收到有效地址开始，到数据写入被选中单元为止所需的全部时间。<br/>
+&emsp;&emsp;2）写入时间：从存储器接收到有效地址开始，到数据写入被选中单元为止所需的全部时间。<br/><br/>
+
 &emsp;② 存取周期：指存储器进行连续两次独立的存储器操作（如连续两次读操作）所需的最小间隔时间，通常存取周期大于存取时间。<br/>
 <br/><br/>
 
@@ -20,7 +22,8 @@
 &emsp;&emsp;&emsp;① 动态 RAM 集成度远高于静态 RAM （基本单元电路 MOS 管数量少）。<br/>
 &emsp;&emsp;&emsp;② 动态 RAM 行列地址按先后顺序输送，没有芯片引脚，封装尺寸小。<br/>
 &emsp;&emsp;&emsp;③ 动态 RAM 功耗比静态  RAM 小。<br/>
-&emsp;&emsp;&emsp;⑤ 动态 RAM 价格较低。<br/>
+&emsp;&emsp;&emsp;⑤ 动态 RAM 价格较低。<br/><br/>
+
 &emsp;&emsp;缺点：<br/>
 &emsp;&emsp;&emsp;① 动态 RAM 速度较静态  RAM 低。 <br/>
 &emsp;&emsp;&emsp;② 动态 RAM 需配置再生电路，也会消耗部分功率。<br/>
@@ -35,16 +38,18 @@
 &emsp;&emsp;&emsp;&emsp;对于 128 * 128 的存储芯片阵列，若存取周期为 0.5μs ，刷新周期为 2ms（4000 个存取周期） ，则对 128 行进行集中刷新需 64μs（128 个存取周期） ，其余 1926μs 用以读/写或维持信息。<br/>
 &emsp;&emsp;&emsp;&emsp;死时间：64μs<br/>
 &emsp;&emsp;&emsp;&emsp;死时间率：128 / 4000 * 100% = 3.2%<br/>
-![集中刷新](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/%E9%9B%86%E4%B8%AD%E5%88%B7%E6%96%B0.png)<br/>
+![集中刷新](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/%E9%9B%86%E4%B8%AD%E5%88%B7%E6%96%B0.png)<br/><br/>
+
 &emsp;&emsp;② 分散刷新<br/>
 &emsp;&emsp;&emsp;&emsp;对每行存储单元的刷新分散到每个存取周期内完成，将存取周期分成两段，前半段用来读/写或维持信息，后半段用来刷新，若读写周期为 0.5μs，则存取周期为 1μs 。以 128 * 128 的存储芯片为例，刷新按行进行，每隔 128μs 就可以将全部存储单元刷新一遍。
 &emsp;&emsp;&emsp;&emsp;如此不存在死时间，但存取周期变长，整个系统速度降低。<br/>
-![分散刷新](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/%E5%88%86%E6%95%A3%E5%88%B7%E6%96%B0.png)
+![分散刷新](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/%E5%88%86%E6%95%A3%E5%88%B7%E6%96%B0.png)<br/><br/>
+
 &emsp;&emsp;③ 异步刷新<br/>
 &emsp;&emsp;&emsp;&emsp;集中式和分散式的折中。<br/>
 &emsp;&emsp;&emsp;&emsp;对于 n * n 的存储芯片阵列，在 2ms 内对 n 行各刷新一遍，即每隔 2000μs / n 刷新一行，仅在每行的存取进行到最后时进行一次时长为一存取周期的刷新。<br/>
 &emsp;&emsp;&emsp;&emsp;如此，刷新一行只停止一个存取周期，而对每行来说，刷新间隔时间仍为 2ms ，而死时间缩短为 0.5μs 。<br/>
-![异步刷新](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/%E5%BC%82%E6%AD%A5%E5%88%B7%E6%96%B0.png)
+![异步刷新](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/%E5%BC%82%E6%AD%A5%E5%88%B7%E6%96%B0.png)<br/>
 <br/><br/>
 
 11.一个 8K * 8 位的动态 RAM 芯片，其内部结构排列成 256 * 256 形式，读写周期为 0.1μs 。试问采用集中刷新、分散刷新和异步刷新的刷新间隔分别为多少？<br/>
@@ -52,10 +57,12 @@
 &emsp;&emsp;&emsp;刷新间隔：2ms <br/>
 &emsp;&emsp;&emsp;对 256 行集中刷新需要：256 * 0.1μ = 25.6μs <br/>
 &emsp;&emsp;&emsp;其余 2ms - 25.6μs = 19974.4μs 用以读写或维持信息。<br/>
-&emsp;&emsp;&emsp;死时间为：25.6μs <br/>
+&emsp;&emsp;&emsp;死时间为：25.6μs <br/><br/>
+
 &emsp;② 分散刷新<br/>
 &emsp;&emsp;刷新间隔：0.2μs <br/>
-&emsp;&emsp;每隔 256 * 0.2 = 51.2μs 刷新一行。<br/>
+&emsp;&emsp;每隔 256 * 0.2 = 51.2μs 刷新一行。<br/><br/>
+
 &emsp;③ 异步刷新<br/>
 &emsp;&emsp;刷新间隔：2000μs / 256 = 7.8125μs，即每隔 7.8125μs 刷新一行。<br/>
 <br/><br/>
@@ -71,7 +78,7 @@
 &emsp;（3）板内芯片数：32K * 8bits / (4K * 4bits) = 16 <br/>
 &emsp;（4）芯片总数：8 * 16 = 128 <br/>
 &emsp;（5）CPU 通过最高的 3 位地址译码选择模块板，通过次 3 位选择板内芯片，最末 12 位选择片内地址。<br/>
-![地址格式分配](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/E14%E5%9C%B0%E5%9D%80%E6%A0%BC%E5%BC%8F%E5%88%86%E9%85%8D.png)
+![地址格式分配](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/E14%E5%9C%B0%E5%9D%80%E6%A0%BC%E5%BC%8F%E5%88%86%E9%85%8D.png)<br/>
 <br/><br/>
 
 15.<br/>
@@ -83,6 +90,7 @@
 &emsp;&emsp;C1 = b4 ⊕ b3 ⊕ b1<br/>
 &emsp;&emsp;C2 = b4 ⊕ b2 ⊕ b1<br/>
 &emsp;&emsp;C4 = b3 ⊕ b2 ⊕ b1<br/><br/>
+
 &emsp;① b4b3b2b1 = 1100<br/>
 
 18.<br/>
