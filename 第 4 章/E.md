@@ -37,23 +37,25 @@
 &emsp;&emsp;&emsp;&emsp;死时间率：128 / 4000 * 100% = 3.2%<br/>
 ![集中刷新](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/%E9%9B%86%E4%B8%AD%E5%88%B7%E6%96%B0.png)<br/>
 &emsp;&emsp;② 分散刷新<br/>
-&emsp;&emsp;&emsp;&emsp;对每行存储单元的刷新分散到每个存取周期内完成，将存取周期分成两段，前半段用来读/写或维持信息，后半段用来刷新，若读写周期为 0.5μs，则存取周期为 1μs 。以 128 * 128 的存储芯片为例，刷新按行进行，每隔 128μs 就可以将全部存储单元刷新一遍。如此不存在死时间，但存取周期变长，整个系统速度降低。<br/>
+&emsp;&emsp;&emsp;&emsp;对每行存储单元的刷新分散到每个存取周期内完成，将存取周期分成两段，前半段用来读/写或维持信息，后半段用来刷新，若读写周期为 0.5μs，则存取周期为 1μs 。以 128 * 128 的存储芯片为例，刷新按行进行，每隔 128μs 就可以将全部存储单元刷新一遍。
+&emsp;&emsp;&emsp;&emsp;如此不存在死时间，但存取周期变长，整个系统速度降低。<br/>
 ![分散刷新](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/%E5%88%86%E6%95%A3%E5%88%B7%E6%96%B0.png)
 &emsp;&emsp;③ 异步刷新<br/>
 &emsp;&emsp;&emsp;&emsp;集中式和分散式的折中。<br/>
 &emsp;&emsp;&emsp;&emsp;对于 n * n 的存储芯片阵列，在 2ms 内对 n 行各刷新一遍，即每隔 2000μs / n 刷新一行，仅在每行的存取进行到最后时进行一次时长为一存取周期的刷新。<br/>
-&emsp;&emsp;&emsp;&emsp;如此刷新一行只停止一个存取周期，而刷新间隔时间仍为 2ms ，而死时间缩短为 0.5μs 。<br/>
+&emsp;&emsp;&emsp;&emsp;如此，刷新一行只停止一个存取周期，而对每行来说，刷新间隔时间仍为 2ms ，而死时间缩短为 0.5μs 。<br/>
+![异步刷新](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/%E5%BC%82%E6%AD%A5%E5%88%B7%E6%96%B0.png)
 <br/><br/>
 
 11.一个 8K * 8 位的动态 RAM 芯片，其内部结构排列成 256 * 256 形式，读写周期为 0.1μs 。试问采用集中刷新、分散刷新和异步刷新的刷新间隔分别为多少？<br/>
 &emsp;① 集中刷新<br/>
-&emsp;&emsp;&emsp;刷新间隔：2ms<br/>
-&emsp;&emsp;&emsp;对 256 行集中刷新需要：256 * 0.1μ = 25.6μs<br/>
+&emsp;&emsp;&emsp;刷新间隔：2ms <br/>
+&emsp;&emsp;&emsp;对 256 行集中刷新需要：256 * 0.1μ = 25.6μs <br/>
 &emsp;&emsp;&emsp;其余 2ms - 25.6μs = 19974.4μs 用以读写或维持信息。<br/>
-&emsp;&emsp;&emsp;死时间为：25.6μs<br/>
+&emsp;&emsp;&emsp;死时间为：25.6μs <br/>
 &emsp;② 分散刷新<br/>
-&emsp;刷新间隔：0.2μs<br/>
-&emsp;对全部存储单元刷新一遍的需要：256 * 256 * 0.1 = 6553.6μs<br/>
+&emsp;刷新间隔：0.2μs <br/>
+&emsp;每隔 256 * 0.2 = 51.2μs 刷新一行。<br/>
 &emsp;③ 异步刷新<br/>
 &emsp;刷新间隔：2000μs / 256 = 7.8125μs，即每隔 7.8125μs 刷新一行。<br/>
 <br/><br/>
@@ -65,9 +67,9 @@
 &emsp;&emsp;（4）共有多少片 RAM ？<br/>
 &emsp;&emsp;（5）CPU 如何选择各模块板？<br/>
 &emsp;（1）最大主存空间为：2 ^ 18字 * 8bits = 256KB (1B = 8bits) <br/>
-&emsp;（2）模块板数：256KB / (32K * 8bits) = 8<br/>
-&emsp;（3）板内芯片数：32K * 8bits / (4K * 4bits) = 16<br/>
-&emsp;（4）芯片总数：8 * 16 = 128<br/>
+&emsp;（2）模块板数：256KB / (32K * 8bits) = 8 <br/>
+&emsp;（3）板内芯片数：32K * 8bits / (4K * 4bits) = 16 <br/>
+&emsp;（4）芯片总数：8 * 16 = 128 <br/>
 &emsp;（5）CPU 通过最高的 3 位地址译码选择模块板，通过次 3 位选择板内芯片，最末 12 位选择片内地址。<br/>
 ![地址格式分配](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/E14%E5%9C%B0%E5%9D%80%E6%A0%BC%E5%BC%8F%E5%88%86%E9%85%8D.png)
 <br/><br/>
@@ -80,14 +82,18 @@
 &emsp;因此，<br/>
 &emsp;&emsp;C1 = b4 ⊕ b3 ⊕ b1<br/>
 &emsp;&emsp;C2 = b4 ⊕ b2 ⊕ b1<br/>
-&emsp;&emsp;C4 = b3 ⊕ b2 ⊕ b1<br/>
-&emsp;所以 1100 对应汉明码为<br/>
+&emsp;&emsp;C4 = b3 ⊕ b2 ⊕ b1<br/><br/>
+&emsp;① b4b3b2b1 = 1100<br/>
 
 18.<br/>
 
 20.<br/>
 
 24.<br/>
+
+25.什么是程序访问的局部性？存储系统中哪一级才用了程序访问的局部性原理？<br/>
+&emsp;程序访问的局部性：指令和数据在主存内都是连续而非随机存放的，并且有些指令数据往往会被多次调用，因此CPU 从主存取指令或数据，在一定时间内，只是对主存局部地址的访问。<br/>
+&emsp;“Cache-主存” 层和 “主存-辅存” 层。<br/>
 
 28.<br/>
 
