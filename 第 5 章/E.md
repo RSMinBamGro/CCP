@@ -19,12 +19,12 @@
 &emsp;① 程序查询方式<br/>
 &emsp;&emsp;&emsp;CPU 通过程序不断查询 I/O 设备是否已处于准备状态，从而控制 I/O 设备与主机交换信息。<br/>
 &emsp;&emsp;&emsp;因为 CPU 需反复查询 I/O 设备状态，存在 “踏步” 现象。<br/>
-![程序查询方式流程图]()
+![程序查询方式流程图](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F.png)<br/>
 
 &emsp;② 程序中断方式<br/>
 &emsp;&emsp;&emsp;CPU 启动 I/O 设备后继续执行现行程序，当 I/O 设备准备就绪并向 CPU 发出中断请求后才予以响应。软件方面必须编制中断服务程序。<br/>
 &emsp;&emsp;&emsp;CPU 工作效率较程序查询方式更高，不存在 “踏步” 现象。<br/>
-![程序中断方式流程图]()
+![程序中断方式流程图](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F.png)<br/>
 
 &emsp;③ DMA 方式<br/>
 &emsp;&emsp;&emsp;I/O 设备与主存间存在一条数据通路，能与主存直接交换信息而不占用 CPU 。<br/>
