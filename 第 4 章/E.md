@@ -55,13 +55,13 @@
 &emsp;&emsp;（3）每个模块板内共有几片 RAM 芯片？<br/>
 &emsp;&emsp;（4）共有多少片 RAM ？<br/>
 &emsp;&emsp;（5）CPU 如何选择各模块板？<br/>
-（1）最大主存空间为：2 ^ 18字 * 8bits = 256KB(1B = 8bits)
-（2）模块板数：256KB / (32K * 8bits) = 8
-（3）板内芯片数：32K * 8bits / (4K * 4bits) = 16
-（4）芯片总数：8 * 16 = 128
-（5）CPU 通过最高的 3 位地址译码选择模块板，通过次 3 位选择板内芯片，最末 12 位选择片内地址。
-![image]()
-
+&emsp;（1）最大主存空间为：2 ^ 18字 * 8bits = 256KB(1B = 8bits)<br/>
+&emsp;（2）模块板数：256KB / (32K * 8bits) = 8<br/>
+&emsp;（3）板内芯片数：32K * 8bits / (4K * 4bits) = 16<br/>
+&emsp;（4）芯片总数：8 * 16 = 128<br/>
+&emsp;（5）CPU 通过最高的 3 位地址译码选择模块板，通过次 3 位选择板内芯片，最末 12 位选择片内地址。<br/>
+<img src="https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%204%20%E7%AB%A0/E14%E5%9C%B0%E5%9D%80%E6%A0%BC%E5%BC%8F%E5%88%86%E9%85%8D.png" div align = center />
+<br/><br/>
 
 15.<br/>
 
