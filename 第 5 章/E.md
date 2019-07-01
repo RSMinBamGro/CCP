@@ -72,12 +72,23 @@
 <br/><br/>
 
 
-13.说明中断向量地址和入口地址的区别和联系。
+13.说明中断向量地址和入口地址的区别和联系。<br/>
+
+&emsp;有不同的中断服务程序负责不同的设备，每个服务程序都有一个入口地址，CPU 须找到该地址。<br/>
+&emsp;入口地址的寻找可以通过硬件向量法完成，即通过硬件电路产生的向量地址来寻找该服务程序入口地址。<br/>
+&emsp;向量地址由中断向量地址形成部件产生，该部件的输出来自排队器的输出 INTPi ，该部件实为编码器。<br/>
+![链式排队器](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E9%93%BE%E5%BC%8F%E6%8E%92%E9%98%9F%E5%99%A8.png)<br/>
+![中断向量地址形成部件](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E5%9C%B0%E5%9D%80%E5%BD%A2%E6%88%90%E9%83%A8%E4%BB%B6.png)<br/>
+![通过向量地址寻找入口地址](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E9%80%9A%E8%BF%87%E5%90%91%E9%87%8F%E5%9C%B0%E5%9D%80%E5%AF%BB%E6%89%BE%E5%85%A5%E5%8F%A3%E5%9C%B0%E5%9D%80.png)<br/>
+<br/><br/>
 
 
+16.在什么条件和什么时间，CPU 可以响应 I/O 的中断请求？<br/>
 
-
-16.在什么条件和什么时间，CPU 可以相应 I/O 的中断请求？
+&emsp;条件：CPU 中允许中断触发器 EINT 为 “1”，且有至少一个中断请求被查询到。<br/>
+&emsp;时间：每条指令执行阶段的结束时刻。<br/>
+![程序中断方式接口电路的基本组成](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.png)<br/>
+<br/><br/>
 
 
 18.试以键盘设备为例，结合中断接口电路，说明其工作过程。
