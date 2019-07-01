@@ -1,4 +1,5 @@
 2.简要说明 CPU 和 I/O 设备之间传递信息可采用哪几种联络方式，它们分别用于什么场合。<br/>
+
 &emsp;① 立即响应方式<br/>
 &emsp;&emsp;&emsp;适用于工作速度十分缓慢的 I/O 设备。<br/>
 &emsp;&emsp;&emsp;通常，它们与 CPU 发生联系时已经使其处于某种等待状态，只要 CPU 发出的 I/O 指令到达，它们可以即刻相应。<br/><br/>
@@ -6,7 +7,8 @@
 &emsp;② 异步工作采用应答信号联络<br/>
 &emsp;&emsp;&emsp;适用于工作速度与主机不匹配的 I/O 设备。<br/>
 &emsp;&emsp;&emsp;CPU 与 I/O 设备之间存在 I/O 接口，用以暂存数据。I/O 设备与接口之间通过 “Ready” 信号和 “Strobe” 信号表示 CPU 与 I/O 设备间数据的交互。<br/>
-![应答信号联络方式](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E5%BC%82%E6%AD%A5%E5%B9%B6%E8%A1%8C%E5%BA%94%E7%AD%94%E8%81%94%E7%BB%9C%E6%96%B9%E5%BC%8F.png)<br/><br/>
+![应答信号联络方式](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E5%BC%82%E6%AD%A5%E5%B9%B6%E8%A1%8C%E5%BA%94%E7%AD%94%E8%81%94%E7%BB%9C%E6%96%B9%E5%BC%8F.png)<br/>
+<br/><br/>
 
 &emsp;③ 同步工作采用同步时标联络<br/>
 &emsp;&emsp;&emsp;适用于工作速度与 CPU 完全同步的 I/O 设备。<br/>
@@ -22,7 +24,7 @@
 ![程序查询方式流程图](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F.png)<br/>
 
 &emsp;② 程序中断方式<br/>
-![中断](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E4%B8%AD%E6%96%AD.png)
+![中断](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E4%B8%AD%E6%96%AD.png)<br/>
 &emsp;&emsp;&emsp;CPU 启动 I/O 设备后继续执行现行程序，当 I/O 设备准备就绪并向 CPU 发出中断请求后才予以响应。软件方面必须编制中断服务程序。<br/>
 &emsp;&emsp;&emsp;CPU 工作效率较程序查询方式更高，不存在 “踏步” 现象。<br/>
 ![程序中断方式流程图](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F.png)<br/>
@@ -30,13 +32,14 @@
 &emsp;③ DMA 方式<br/>
 &emsp;&emsp;&emsp;I/O 设备与主存间存在一条数据通路，能与主存直接交换信息而不占用 CPU 。<br/>
 &emsp;&emsp;&emsp;若 DMA 与 CPU 同时访问主存，CPU 总是将总线占有权让给 DMA，称之为窃取。窃取时间一般为一个存取周期。<br/>
-![三种方式 CPU 工作效率比较](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%20CPU%20%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87%E6%AF%94%E8%BE%83.png)
+![三种方式 CPU 工作效率比较](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%20CPU%20%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87%E6%AF%94%E8%BE%83.png)<br/>
+<br/><br/>
 
 
 11.简述 I/O 接口的功能和基本组成。<br/>
 
-![I/O 总线与接口部件](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/IO%20%E6%80%BB%E7%BA%BF%E5%92%8C%E6%8E%A5%E5%8F%A3%E9%83%A8%E4%BB%B6.png)
-&emsp;① 选址功能<br/>
+![I/O 总线与接口部件](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/IO%20%E6%80%BB%E7%BA%BF%E5%92%8C%E6%8E%A5%E5%8F%A3%E9%83%A8%E4%BB%B6.png)<br/>
+&emsp;① 选址<br/>
 &emsp;&emsp;&emsp;设备选择线上的设备码确定 CPU 选择哪台设备。<br/>
 &emsp;&emsp;&emsp;每个接口具有选址功能，当设备码与被设备吗相符时，发出设备选中信号 SEL（通过设备选择电路实现），控制该设备通过，命令线、状态线和数据线与主机交换信息。<br/>
 
@@ -50,13 +53,13 @@
 
 &emsp;④ 反应工作状态<br/>
 &emsp;&emsp;&emsp;接口中设有能反应设备工作状态的触发器，以便 CPU 及时了解 I/O 设备工作状态。<br/>
-![I/O 接口基本组成](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/IO%20%E6%8E%A5%E5%8F%A3%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.png)
+![I/O 接口基本组成](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/IO%20%E6%8E%A5%E5%8F%A3%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.png)<br/>
 <br/><br/>
 
 
 12.结合程序查询电路的工作过程，说明其工作原理。<br/>
 
-![程序查询方式流程](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%B5%81%E7%A8%8B.png)
+![程序查询方式流程](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%B5%81%E7%A8%8B.png)<br/>
 &emsp;① CPU 通过 I/O 指令启动输入设备，指令的设备码字段通过地址线送至设备选择电路。<br/>
 &emsp;② 若该接口的设备码与地址线上的代码吻合，其输出 SEL 信号有效。<br/>
 &emsp;③ I/O 指令的启动命令经过与非门将工作触发器 B 置 “1”，完成触发器 D 置 “0” ，表示设备处于准备状态。<br/>
@@ -65,7 +68,7 @@
 &emsp;⑥ 由设备发出设备工作结束信号，将 D 置 “1”，B 置 “0”，表示外设准备就绪。<br/>
 &emsp;⑦ D 触发器以 “准备就绪” 状态通知 CPU ，表示 “数据缓冲已满” 。<br/>
 &emsp;⑧ CPU 执行输入指令，将数据缓冲寄存器中的数据送至 CPU 中的通用寄存器，再存入主存相关单元。<br/>
-![程序查询方式接口电路的基本组成](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.png)
+![程序查询方式接口电路的基本组成](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.png)<br/>
 <br/><br/>
 
 
