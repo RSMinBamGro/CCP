@@ -113,7 +113,20 @@
 <br/><br/>
 
 
-29.结合 DMA 接口电路说明其工作过程。
+29.结合 DMA 接口电路说明其工作过程。<br/>
+![DMA 接口组成](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/DMA%20%E6%8E%A5%E5%8F%A3%E7%BB%84%E6%88%90.png)<br/>
+
+① 预处理<br/>
+
+
+② 数据传送<br/>
+
+
+③ 后处理<br/>
+
+<br/><br/>
 
 
 30.在 DMA 的工作方式中，CPU 暂停方式和周期挪用方式的数据传送流程有何不同？画图说明。
+
+![DMA 三种传送方式](https://github.com/RSMinBamGro/CCP-Exercises/blob/master/%E7%AC%AC%205%20%E7%AB%A0/DMA%20%E4%B8%89%E7%A7%8D%E4%BC%A0%E9%80%81%E6%96%B9%E5%BC%8F.png)<br/>
